@@ -1,0 +1,17 @@
+# The gateway is the only public entrypoint. Data, feature, and model
+# code run in this process. Parquet and the trained forest live on the volume.
+services:
+  gateway:
+    build: .
+    ports:
+      - "8091:8000"
+    environment:
+      HABITAT_ROOT: /app
+      HABITAT_DATA_DIR: /data
+      HABITAT_SOURCE: fixture
+      PORT: "8000"
+    volumes:
+      - habitat-data:/data
+
+volumes:
+  habitat-data:
