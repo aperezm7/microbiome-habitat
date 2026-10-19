@@ -1,0 +1,5 @@
+#SampleID	study_id	empo_1	empo_2	empo_3
+sampleA	10	Host-associated	Animal	Animal distal gut
+sampleB	11	Free-living	Saline	Water (saline)
+sampleC	12	Free-living	Non-saline	Soil (non-saline)
+blank1	13	Control		
