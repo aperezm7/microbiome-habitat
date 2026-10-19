@@ -1,0 +1,23 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: pip install -e ".[dev]"
+      - name: Test services and hidden challenge solutions
+        run: pytest
+      - name: Fixture train without a download
+        run: python -m services.model.train --fixture --out /tmp/habitat-fixture
+      - name: Reveal a challenge solution
+        run: python -m challenges reveal 03
